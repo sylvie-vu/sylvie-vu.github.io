@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personec F ESS | Sylvie Vu</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-50: #EEEDFE;
+    --purple-100: #CECBF6;
+    --purple-200: #AFA9EC;
+    --purple-400: #7F77DD;
+    --purple-600: #534AB7;
+    --purple-800: #3C3489;
+    --purple-900: #26215C;
+    --bg: #FAFAF8;
+    --surface: #F4F3EF;
+    --text-primary: #1A1A18;
+    --text-secondary: #5F5E5A;
+    --accent: #534AB7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.7; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--purple-800); }
+  
+  /* ── HEADER ── */
+  header { padding: 1.5rem 4rem; border-bottom: 1px solid rgba(83,74,183,0.1); }
+  .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 0.04em; color: var(--text-primary); }
+  .back-link { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+  .back-link:hover { color: var(--accent); }
+  
+  /* ── MAIN ── */
+  main { max-width: 1200px; margin: 0 auto; padding: 4rem; }
+  .hero { margin-bottom: 5rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; }
+  .meta-dot { color: var(--accent); }
+  .hero-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; font-style: italic; line-height: 1.65; color: var(--text-secondary); max-width: 680px; margin-bottom: 3rem; }
+  .hero-highlight { color: var(--accent); }
+
+  .product-link {
+  color: #c53703; /* orange */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+.product-link:focus-visible {
+  text-decoration: underline;
+}
+  
+  /* ── SECTION ── */
+  section { margin-bottom: 4.5rem; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.1; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .section-intro { font-size: 1rem; color: var(--text-secondary); line-height: 1.85; max-width: 720px; margin-bottom: 2rem; }
+  
+  /* ── IMAGE PLACEHOLDER ── */
+  .image-placeholder { background: linear-gradient(135deg, rgba(127,119,221,0.08) 0%, rgba(175,169,236,0.12) 100%); border: 2px dashed var(--purple-200); border-radius: 12px; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; color: var(--purple-600); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 2rem 0; min-height: 300px; padding: 1.5rem; overflow: hidden; }
+  .image-placeholder img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+  
+  /* ── CARD GRID ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .card { background: #fff; border: 2px solid var(--accent); border-radius: 12px; padding: 2rem; transition: transform 0.28s ease, box-shadow 0.28s ease; }
+  .card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 36px rgba(83,74,183,0.12); }
+  .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.8rem; }
+  .card-grid.outcomes .card { border: 3px solid #16815B; }
+  .card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+  .card-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--purple-200); margin-bottom: 1rem; }
+  
+  /* ── METRICS ── */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .metric { position: relative; background: linear-gradient(135deg, #fff 0%, rgba(127,119,221,0.06) 45%, rgba(127,119,221,0.02) 100%); border: 2px solid rgba(83,74,183,0.12); border-radius: 16px; padding: 1.75rem; text-align: center; box-shadow: 0 8px 24px rgba(83,74,183,0.06); transition: transform 0.28s ease, box-shadow 0.28s ease; }
+  .metric:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 46px rgba(83,74,183,0.12); }
+  .metric::after { content: ''; position: absolute; top: 12px; right: 12px; width: 12px; height: 12px; border-radius: 50%; background: #16815B; box-shadow: 0 6px 18px rgba(83,74,183,0.12); }
+  .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300; color: #16815B; margin-bottom: 0.5rem; }
+  .metric-label { font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.08em; }
+  
+  /* ── TAG PILLS ── */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+  .tag { display: inline-flex; padding: 0.5rem 1rem; background: var(--purple-50); border: 1px solid var(--purple-100); border-radius: 20px; color: var(--purple-800); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  
+  /* ── TIMELINE ── */
+  .timeline { margin: 2rem 0; }
+  .timeline-item { display: flex; gap: 2rem; margin-bottom: 2rem; padding-left: 2rem; border-left: 2px solid var(--purple-200); position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .timeline-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+  .timeline-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+  
+  /* ── COLLABORATORS ── */
+  .collaborators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .collaborator-group { background: #fff; border: 1px solid rgba(83,74,183,0.12); border-radius: 12px; padding: 2rem; }
+  .collaborator-group h3 { font-size: 1rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .collaborator-group ul { list-style: none; }
+  .collaborator-group li { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+  
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid rgba(83,74,183,0.1); padding: 2.5rem 4rem; margin-top: 5rem; }
+  .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-text { font-size: 0.82rem; color: var(--text-secondary); letter-spacing: 0.05em; }
+  
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    main { padding: 2rem 1.5rem; }
+    header { padding: 1rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <a href="index.html" class="logo">Sylvie Vu</a>
+    <a href="index.html" class="back-link">← Back to work</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <p class="section-label">Product Design</p>
+    <h1 class="hero-title">Personec F ESS</h1>
+    <div class="hero-meta">
+      <span>UX Designer</span>
+      <span class="meta-dot">·</span>
+      <span>Employee Self-Service</span>
+      <span class="meta-dot">·</span>
+      <span>Mobile & Desktop</span>
+      <span class="meta-dot">·</span>
+      <span>260 Organizations</span>
+    </div>
+    <p class="hero-intro">Redesigned the employee self-service experience for <span class="hero-highlight">260 public sector organizations managing 450,000+ employment contracts</span> — improving usability, accessibility, and mobile support for daily HR-related tasks affecting hundreds of thousands of employees.</p>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section>
+    <p class="section-label">Overview</p>
+    <h2 class="section-title">An employee platform serving public sector at scale</h2>
+    <p class="section-intro">Personec F ESS is an employee self-service solution within the Personec F product family. It enables employees and supervisors to manage personal information, absences, vacations, and events in one place. Information is transferred directly to payroll systems, reducing administrative work and minimizing errors across the entire organization.</p>
+    <p>
+      <a
+          href="https://adesydesignsystem.com/"
+          target="_blank"
+          rel="noopener"
+          class="product-link"
+        >
+        For more product information: Personec F ESS →
+      </a>
+</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>260 Organizations</h3>
+        <p>Serving public sector across Europe with comprehensive HR management capabilities.</p>
+      </div>
+      <div class="card">
+        <h3>450,000+ Employment Contracts</h3>
+        <p>Managing complex employment relationships and compliance requirements at scale.</p>
+      </div>
+      <div class="card">
+        <h3>630,000 Vacation Periods</h3>
+        <p>Handling annual vacation scheduling and absence management across all organizations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE & TEAM -->
+  <section>
+    <p class="section-label">Role & Responsibilities</p>
+    <h2 class="section-title">UX Designer on a collaborative team</h2>
+    <p class="section-intro">I collaborated closely with a multidisciplinary team across UX, product, engineering, and research to understand user needs and deliver a redesigned experience.</p>
+    
+    <div class="collaborators-grid">
+      <div class="collaborator-group">
+        <h3>Collaborated With</h3>
+        <ul>
+          <li>UX Designer & Researcher</li>
+          <li>Product Manager</li>
+          <li>Product Owner</li>
+          <li>Developers</li>
+          <li>QA Tester</li>
+          <li>Design System Team</li>
+        </ul>
+      </div>
+      <div class="collaborator-group">
+        <h3>My Responsibilities</h3>
+        <ul>
+          <li>UX strategy & planning</li>
+          <li>Information architecture</li>
+          <li>User flows & workflows</li>
+          <li>Wireframing</li>
+          <li>Prototyping</li>
+          <li>Usability testing</li>
+          <li>Responsive & mobile design</li>
+          <li>High-fidelity design</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section>
+    <p class="section-label">The Challenge</p>
+    <h2 class="section-title">Legacy system with significant usability gaps</h2>
+    <p class="section-intro">Research and customer feedback revealed several critical usability issues in the legacy system that were increasing effort for employees and supervisors performing everyday HR-related tasks.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Confusing navigation</h3>
+        <p>Users struggled to find key actions and features. Information architecture was unclear and inefficient.</p>
+      </div>
+      <div class="card">
+        <h3>Inefficient workflows</h3>
+        <p>Absence and vacation request processes required too many steps and offered unclear guidance.</p>
+      </div>
+      <div class="card">
+        <h3>Poor information hierarchy</h3>
+        <p>Critical information was buried or visually unclear, making it difficult to understand status at a glance.</p>
+      </div>
+      <div class="card">
+        <h3>No mobile support</h3>
+        <p>The system was desktop-only, limiting accessibility for employees on the go.</p>
+      </div>
+      <div class="card">
+        <h3>Accessibility gaps</h3>
+        <p>The design didn't meet evolving European accessibility requirements and WCAG standards.</p>
+      </div>
+      <div class="card">
+        <h3>Increased user effort</h3>
+        <p>Employees and supervisors spent more time than necessary managing HR tasks, creating frustration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS IMPROVED -->
+  <section>
+    <p class="section-label">Redesign Scope</p>
+    <h2 class="section-title">Six critical areas improved</h2>
+    <p class="section-intro">We prioritized the most-used features and workflows, focusing on clarity, efficiency, and mobile-first design.</p>
+    
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">1. Home Screen</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Redesigned to improve visibility of key actions, prioritize important information, and create a clearer hierarchy for daily tasks.</p>
+    <!-- <div class="image-placeholder">[Before / After: Home Screen showing improved task visibility and action prioritization]</div> -->
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - homepage.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">2. Absence & Vacation Overview</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Simplified information organization and improved discoverability of actions related to absences and vacations.</p>
+    <!-- <div class="image-placeholder">[Before / After: Overview showing simplified information structure and clearer action paths]</div> -->
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - absence-vacation.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">3. Create Absence Report</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Improved guidance and structure to help users complete absence reporting with greater confidence.</p>
+    <!-- <div class="image-placeholder">[Before / After: Absence reporting showing improved guidance and step-by-step clarity]</div> -->
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - create absence.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">4. Create Vacation Request</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Reduced complexity in the vacation request flow and improved clarity throughout the process.</p>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">5. Create Event</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Simplified event creation and aligned interactions with other workflows for consistency.</p>
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - Create event.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2.5rem 0 1rem;">6. Save Vacations & Convert Holidays</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Redesigned complex workflows to make decision-making easier and reduce user confusion.</p>
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - other, file upload flow.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+  </section>
+
+  <!-- DESIGN PROCESS -->
+  <section>
+    <p class="section-label">Design Process</p>
+    <h2 class="section-title">From discovery to validation</h2>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Discovery</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">To understand existing challenges, we analyzed:</p>
+    <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+      <li style="margin-bottom: 0.75rem;">Customer satisfaction reports and feedback patterns</li>
+      <li style="margin-bottom: 0.75rem;">pNPS feedback from active users</li>
+      <li style="margin-bottom: 0.75rem;">User feedback from 1,448 employees across organizations</li>
+      <li>Existing workflows and interface patterns</li>
+      <div class="image-placeholder"><img src="images/ess-html/Current screen mapping.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    </ul>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">UX Audit</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We conducted a comprehensive audit covering:</p>
+    <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+      <li style="margin-bottom: 0.75rem;">User flow mapping and journey documentation</li>
+      <li style="margin-bottom: 0.75rem;">UI inventory audit to catalog existing components and patterns</li>
+      <li style="margin-bottom: 0.75rem;">Pain point analysis and prioritization</li>
+      <li>Accessibility review against WCAG standards</li>
+    </ul>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Alignment & Prioritization</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We worked closely with stakeholders to:</p>
+    <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+      <li style="margin-bottom: 0.75rem;">Define scope and prioritize high-impact improvements</li>
+      <li style="margin-bottom: 0.75rem;">Align business goals and user needs</li>
+      <li style="margin-bottom: 0.75rem;">Coordinate implementation timelines</li>
+      <li>Plan dependencies with the Design System team</li>
+    </ul>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Information Architecture</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">We reorganized navigation and content structure to improve discoverability and create a more intuitive experience for users.</p>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Wireframing</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Created quick sketches and wireframes to validate layout concepts and workflow improvements with the project team before moving to high-fidelity design.</p>
+    <div class="image-placeholder"><img src="images/ess-html/ESS before after - paper wireframe.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+    <div class="image-placeholder"><img src="images/ess-html/Wireframe.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Low-Fidelity Validation</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Built low-fidelity prototypes focusing on:</p>
+    <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 1.5rem;">
+      <li style="margin-bottom: 0.75rem;">Home Screen redesign</li>
+      <li style="margin-bottom: 0.75rem;">Create Vacation workflow</li>
+      <li>Create Absence workflow</li>
+      <div class="image-placeholder"><img src="images/ess-html/Lofi testing.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    </ul>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Collaborated with UX Research to conduct Maze testing with 30 customers and identify early usability issues before committing to high-fidelity design.</p>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Iteration & High-Fidelity Design with accessibility</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Refined concepts based on testing insights and designed complete end-to-end experiences using the Design System. Worked closely with the Design System team to validate components, responsive behavior, and implementation feasibility. Accessibility annotations were included.</p>
+    <div class="image-placeholder"><img src="images/ess-html/ESS Accessibility check.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-primary); margin: 2rem 0 1rem;">Validation & Beta Launch</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Before full launch, the redesign was validated through Maze testing with 469 users, identifying any remaining issues. The beta launch collected feedback from:</p>
+    <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 2rem;">
+      <li style="margin-bottom: 0.75rem;">148 users through quantitative surveys measuring ease of use and confidence</li>
+      <li>120 open-ended responses providing qualitative insights and improvement suggestions</li>
+    </ul>
+  </section>
+
+  <!-- IMPACT -->
+  <section>
+    <p class="section-label">Impact</p>
+    <h2 class="section-title">Post-Launch Results</h2>
+    <p class="section-intro">The redesign improved the experience of everyday HR tasks for employees and supervisors across hundreds of public sector organizations.</p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value">90.9%</div>
+        <div class="metric-label">Found the system<br>easy to use</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">85.8%</div>
+        <div class="metric-label">Found nothing<br>confusing</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">90.8%</div>
+        <div class="metric-label">Reported no<br>errors or issues</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Mobile & accessibility<br>standards met</div>
+      </div>
+    </div>
+
+    <div class="card-grid outcomes" style="margin-top: 2.5rem;">
+      <div class="card">
+        <h3>Reduced user effort</h3>
+        <p>Simplified workflows and clearer information hierarchy reduced time and effort for daily HR tasks.</p>
+      </div>
+      <div class="card">
+        <h3>Mobile accessibility</h3>
+        <p>Full mobile support enabled employees to manage HR tasks on the go, improving flexibility and inclusion.</p>
+      </div>
+      <div class="card">
+        <h3>Accessibility foundation</h3>
+        <p>Accessibility improvements were built into the foundation of the redesigned experience from day one, benefiting all users.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY LEARNINGS -->
+  <section>
+    <p class="section-label">Key Learnings</p>
+    <h2 class="section-title">Lessons from redesigning at scale</h2>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-number">1</p>
+        <h3>Balancing accessibility with complexity</h3>
+        <p>Complex business rules and accessibility requirements can coexist when design thinking is applied early and consistently throughout the process.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">2</p>
+        <h3>Responsive design from the start</h3>
+        <p>Designing for desktop and mobile simultaneously, rather than as an afterthought, results in better experiences across all contexts.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">3</p>
+        <h3>Design system alignment</h3>
+        <p>Coordinating product delivery with Design System maturity and roadmap dependencies requires early planning and close collaboration with system teams.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">4</p>
+        <h3>Validation at scale reduces risk</h3>
+        <p>Large-scale user testing (Maze with 30 users for low-fi, 469 for hi-fi) provides confidence and reduces risk before full organization-wide launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-link">← Back to work</a>
+</main>
+
+<footer>
+  <div class="footer-content"></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sylvie Vu — UX & Design Systems</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-50: #EEEDFE;
+    --purple-100: #CECBF6;
+    --purple-200: #AFA9EC;
+    --purple-400: #7F77DD;
+    --purple-600: #534AB7;
+    --purple-800: #3C3489;
+    --purple-900: #26215C;
+    --gray-50: #F7F6F3;
+    --gray-100: #EFEFEB;
+    --gray-200: #D3D1C7;
+    --gray-400: #888780;
+    --gray-600: #5F5E5A;
+    --gray-900: #1A1A18;
+    --bg: #FAFAF8;
+    --surface: #F4F3EF;
+    --text-primary: #1A1A18;
+    --text-secondary: #5F5E5A;
+    --text-muted: #888780;
+    --accent: #534AB7;
+    --accent-light: #7F77DD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(250,250,248,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 4rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--purple-800); transform: translateY(-1px); }
+
+  .btn-ghost {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+  .hero-right {
+    background: var(--purple-900);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 30%, rgba(127,119,221,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(175,169,236,0.2) 0%, transparent 60%);
+  }
+
+  .hero-visual-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .hero-photo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 0;
+  }
+
+  .hero-photo-frame {
+    width: min(320px, 70vw);
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    position: relative;
+  }
+
+  .hero-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid var(--purple-100);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-floating-tags {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .tag {
+    position: absolute;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  .tag-1 { top: 8%; left: 10%; }
+  .tag-2 { top: 12%; right: 12%; }
+  .tag-3 { top: 28%; left: 8%; }
+  .tag-4 { top: 24%; right: 32%; }
+  .tag-5 { top: 42%; left: 52%; transform: translate(-50%, 0); }
+  .tag-6 { top: 52%; right: 10%; }
+  .tag-7 { bottom: 22%; left: 10%; }
+  .tag-8 { bottom: 18%; right: 10%; }
+  .tag-9 { bottom: 34%; left: 50%; transform: translate(-50%, 0); }
+  .tag-10 { bottom: 10%; left: 30%; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  /* ── ABOUT / CV ── */
+  .about {
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+  }
+
+  .about-body {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .cv-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .cv-block-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--purple-100);
+  }
+
+  .cv-item {
+    margin-bottom: 1.25rem;
+  }
+
+  .cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+
+  .cv-item-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .cv-item-year {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .cv-item-company {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--purple-50);
+    color: var(--purple-800);
+    border: 1px solid var(--purple-100);
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── WORK ── */
+  .work {
+    background: var(--bg);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .work-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .work-tab {
+    padding: 0.55rem 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: background 0.18s, color 0.18s;
+    border-right: 1px solid var(--gray-200);
+  }
+
+  .work-tab:last-child { border-right: none; }
+  .work-tab.active { background: var(--accent); color: #fff; }
+  .work-tab:hover:not(.active) { background: var(--purple-50); color: var(--accent); }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    text-decoration: none;
+    min-height: 320px;
+    max-height: 360px;
+    border-radius: 12px;
+    border: 1px solid rgba(83,74,183,0.12);
+    transition: box-shadow 0.3s;
+  }
+
+  .project-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+
+  .project-bg {
+    position: relative;
+    overflow: hidden;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .project-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+
+  .project-card:hover .project-bg { transform: scale(1.05); }
+
+  .project-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  .project-card:hover .project-arrow { opacity: 1; transform: translateX(0); }
+
+  .project-arrow svg { 
+    width: 12px; 
+    height: 12px; 
+    color: var(--accent);
+    stroke: var(--accent);
+  }
+
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 1;
+    padding: 2rem;
+    background: transparent;
+  }
+
+  .project-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    margin-top: 0;
+  }
+
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+  }
+
+  .project-detail {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 0;
+  }
+
+  .ds-projects { display: none; }
+  .ds-projects.visible, .ux-projects.visible { display: contents; }
+  .ux-projects { display: contents; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--purple-900);
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact .section-label { color: var(--purple-200); }
+  .contact .section-label::before { background: var(--purple-200); }
+
+  .contact .section-title {
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-text {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: #fff;
+    transition: padding-left 0.25s;
+    font-size: 0.9rem;
+  }
+
+  .contact-link:hover { padding-left: 0.5rem; color: var(--purple-200); }
+
+  .contact-link span { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .contact-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .contact-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .contact-circle::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .contact-circle::after {
+    content: '';
+    position: absolute;
+    inset: 48px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(127,119,221,0.25) 0%, transparent 70%);
+  }
+
+  .contact-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    z-index: 1;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 4rem;
+    background: var(--purple-900);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.36s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 320px; }
+    .hero-left { padding: 4rem 1.5rem; }
+    .about, .contact { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .work-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .projects-grid { gap: 1.5rem; }
+    .project-card { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: auto; max-height: none; }
+    .project-info { grid-column: 1; grid-row: 1; padding: 2rem 1.5rem; }
+    .project-bg { grid-column: 1; grid-row: 2; min-height: 240px; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Sylvie Vu</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow animate">UX Designer & Design Systems</p>
+    <h1 class="hero-name animate delay-1">Design with<br><em>system thinking</em><br> & accessibility.</h1>
+    <p class="hero-desc animate delay-2"> Beside UX Design, I am specialized in Design Systems with scalable UI & accessibility standards for cross-functional product teams. Not only love solving UX problems in complex flows, I also strengthened my skills in UI architecture, component & token systems.</p>
+    <div class="hero-ctas animate delay-3">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="#about" class="btn-ghost">Read CV</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual-bg"></div>
+    <div class="hero-visual-grid"></div>
+    <div class="hero-floating-tags">
+      <span class="tag tag-1">UX Research and Design</span>
+      <span class="tag tag-2">Design Systems</span>
+      <span class="tag tag-3">Interaction Design</span>
+      <span class="tag tag-4">Component Libraries</span>
+      <span class="tag tag-5">Prototyping</span>
+      <span class="tag tag-6">Design Tokens</span>
+      <span class="tag tag-7">Visual Hierarchy</span>
+      <span class="tag tag-8">Problem Solving</span>
+      <span class="tag tag-9">Systems Thinking</span>
+      <span class="tag tag-10">Accessibility</span>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="images/Sylvie.jpg" alt="Sylvie Vu" class="hero-photo-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CV -->
+<section class="about" id="about">
+  <div>
+    <p class="section-label">About</p>
+    <h2 class="section-title">A little about me</h2>
+    <p class="about-intro">"A systems approach starts from the belief that the world is an interconnected and interdependent whole." — C. West Churchman</p>
+    <p class="about-body">
+Hi, I am Sylvie, I am passionate about turning fragmented experiences into consistent, efficient, and maintainable products. Also, I care about inclusivity, so I'd love to collaborate closely with stakeholders, and take into account accessibility in everything I design.
+<br><br>
+Beside work, my hobbies are dancing, singing, and playing piano. I also love to spread positive vibes to people around, I guess this is why my colleagues call me sunshine :).  For more of my lovely work-life moments, visit my LinkedIn. I posted some there :)     
+    </p>
+    <a href="#" class="btn-primary" style="display:inline-block;">View my CV</a>
+  </div>
+
+  <div class="cv-grid">
+    <div>
+      <p class="cv-block-title">Experience</p>
+      <div class="cv-item">
+
+        <div class="cv-item-header">
+          <span class="cv-item-role">UX & UI Designer | Design System (build & maintain)</span>
+          <span class="cv-item-year">07/2024 – recent</span>
+        </div>
+        <p class="cv-item-company">Visma</p>
+        <p class="cv-item-desc">From scratch, as the key designer, I collaborate with developer to build a Design System for multiple (7+) enterprise SaaS products. Also continue to work with UX Design to improve usability problems and flows in complex products.
+        Continuously experiment with AI tools (Claude, Figma MCP, etc) to improve design process and prototyping with Design System.
+        </p>
+      </div>
+
+        <div class="cv-item-header">
+          <span class="cv-item-role">UX Design + Design System Trainee</span>
+          <span class="cv-item-year">12/2023 – T7/2024</span>
+        </div>
+        <p class="cv-item-company">Visma</p>
+        <p class="cv-item-desc">Contributing across the full design process (Analyse problems, investigate in UX Debt, conduct user research, stakeholder collaboration, improve information architecture, design complex workflows, prototyping & usability testing)</p>
+      </div>
+      <div class="cv-item">
+
+      <div class="cv-item">
+        <div class="cv-item-header">
+          <span class="cv-item-role">Lead Graphic Designer (Involved in UI/ UX Initiatives)</span>
+          <span class="cv-item-year">05/2021 – 08/2022</span>
+        </div>
+        <p class="cv-item-company">UNIQLO Vietnam (Client) - Transcosmos (Agency) | Vietnam</p>
+        <p class="cv-item-desc"><p class="cv-item-desc">Lead a team of 4 people. Follow the global guidelines of UNIQLO’s Design System.  
+Contribute to the launch of UNIQLO VN E-commerce app (in the middle of Covid - 11/2021). The app now has 500k+ downloads & is rated as one of the best e-commerce apps in Vietnam (2023) 
+Contributed to total global sales of E-commerce: 10% (2021) - 16% (2022) despite Covid.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="cv-block-title">Education</p>
+      <div class="cv-item">
+        <div class="cv-item-header">
+          <span class="cv-item-role">B.A. Business Information Technology</span>
+          <span class="cv-item-year">Aug 2022 – May 2024</span>
+        </div>
+        <p class="cv-item-company">LAB University of Applied Sciences</p>
+         <p class="cv-item-desc">
+Thesis: Grade 5/5 - 
+Intuitive navigation: the impact of information architecture (IA) on user experience and its cognitive psychology relevance
+Case study: Jobs page of Glassdoor & LinkedIn
+<br>
+https://www.theseus.fi/handle/10024/853043</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="cv-block-title">Skills</p>
+      <div class="skills-list">
+        <span class="skill-pill">Figma, Figma MCP</span>
+        <span class="skill-pill">Claude, Claude Code x Figma MCP</span>
+        <span class="skill-pill">GitHub + Copilot</span>
+        <span class="skill-pill">AI Prototyping with Design System</span>
+        <span class="skill-pill">Design Tokens</span>
+        <span class="skill-pill">Design System Bulding & Training</span>
+        <span class="skill-pill">Accessibility</span>
+        <span class="skill-pill">Information Architecture</span>
+        <span class="skill-pill">Usability Testing</span>
+        <span class="skill-pill">User Research</span>
+        <span class="skill-pill">Complex Workflow Design</span>
+        <span class="skill-pill">SaaS</span>
+        <span class="skill-pill">Stakeholder Collaboration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-header">
+    <div>
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Selected Projects</h2>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+    <!-- UX Projects -->
+    
+
+        <a href="adesy.html" class="project-card" target="_blank" rel="noopener">
+        <div class="project-info">
+          <p class="project-tag">UI Design · Design System · Accessibility · WCAG 2.1 Level AA</p>
+          <p class="project-name">Adesy: Design System for 7+ SaaS products</p>
+          <p class="project-detail">Build a Design System from scratch. Meet WCAG 2.1 Level AA.</p>
+        </div>
+        <div class="project-bg bg-p1">
+          <img src="images/Adesy.jpg" alt="Design System Showcase" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25);"></div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="https://adesydesignsystem.com/" class="project-card" target="_blank" rel="noopener">
+        <div class="project-info">
+          <p class="project-tag">UI Design · UX Design · Accessibility · Design System Evolving</p>
+          <p class="project-name">Personec F ESS x Adesy</p>
+          <p class="project-detail">Improve accessibility standards & UI via finding shared needs of multiple products for a sustainable design system</p>
+        </div>
+        <div class="project-bg bg-p2">
+          <img src="images/ESSxAdesy2.jpg" alt="Personec F ESS" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25);"></div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="ess.html" class="project-card" target="_blank" rel="noopener">
+        <div class="project-info">
+          <p class="project-tag">Product Design · UX Design · Accessibility</p>
+          <p class="project-name">Personec F ESS</p>
+          <p class="project-detail">Redesigned employee self-service for 260+ public sector organizations.</p>
+        </div>
+        <div class="project-bg bg-p2">
+          <img src="images/ESS2.jpg" alt="Personec F ESS" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25);"></div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1evjmgoQxm_A0lmW_eCKOzTgEkmbsDhiB/view?usp=drive_link" class="project-card" target="_blank" rel="noopener">
+        <div class="project-info">
+          <p class="project-tag">AI Prototyping · Speed Prototyping · Design System</p>
+          <p class="project-name">Design.md x Claude Code</p>
+          <p class="project-detail">Design.md: a markdown file to support AI prototyping for the design system and development workflow.</p>
+        </div>
+        <div class="project-bg bg-p2">
+          <img src="images/design-md/Design.md.jpg" alt="Personec F ESS" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25);"></div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+
+      <a href="https://sylvievu.webflow.io/" class="project-card" target="_blank" rel="noopener">
+        <div class="project-info">
+          <p class="project-tag">Old Portfolio</p>
+          <p class="project-name">Archive (2023)</p>
+          <p class="project-detail">Personal projects, school work, and visual design from my previous career that led to opportunities at Visma.</p>
+        </div>
+        <div class="project-bg bg-p2">
+          <img src="images/Otherprojects.jpg" alt="Personec F ESS" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25);"></div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's work together</h2>
+    <div class="contact-links">
+      <a href="mailto:pthanh289@gmail.com" class="contact-link">
+        pthanh289@gmail.com
+        <span>Email</span>
+      </a>
+      <a href="https://linkedin.com/in/sylvievu" class="contact-link" target="_blank" rel="noopener">
+        linkedin.com/in/sylvievu
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+  <div class="contact-visual">
+    <div class="contact-circle">
+      <span class="contact-initials">SV</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Sylvie Vu</span>
+  <span>Created with system thinking, assisted by Claude & Copilot 🤍</span>
+</footer>
+
+<script>
+  function switchTab(type, btn) {
+    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const ux = document.querySelector('.ux-projects');
+    const ds = document.querySelector('.ds-projects');
+    if (type === 'ux') {
+      ux.classList.add('visible'); ux.style.display = 'contents';
+      ds.classList.remove('visible'); ds.style.display = 'none';
+    } else {
+      ds.classList.add('visible'); ds.style.display = 'contents';
+      ux.classList.remove('visible'); ux.style.display = 'none';
+    }
+  }
+
+  // Subtle scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.cv-item, .skill-pill').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

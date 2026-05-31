@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adesy - Aquila Design System | Sylvie Vu</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-50: #EEEDFE;
+    --purple-100: #CECBF6;
+    --purple-200: #AFA9EC;
+    --purple-400: #7F77DD;
+    --purple-600: #534AB7;
+    --purple-800: #3C3489;
+    --purple-900: #26215C;
+    --bg: #FAFAF8;
+    --surface: #F4F3EF;
+    --text-primary: #1A1A18;
+    --text-secondary: #5F5E5A;
+    --accent: #534AB7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.7; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--purple-800); }
+  
+  /* ── HEADER ── */
+  header { padding: 1.5rem 4rem; border-bottom: 1px solid rgba(83,74,183,0.1); }
+  .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 0.04em; color: var(--text-primary); }
+  .back-link { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+  .back-link:hover { color: var(--accent); }
+  
+  /* ── MAIN ── */
+  main { max-width: 1200px; margin: 0 auto; padding: 4rem; }
+  .hero { margin-bottom: 5rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; }
+  .meta-dot { color: var(--accent); }
+  .hero-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; font-style: italic; line-height: 1.65; color: var(--text-secondary); max-width: 680px; margin-bottom: 3rem; }
+  .hero-highlight { color: var(--accent); }
+  .hero-link-box { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; background: #fae8db; border-radius: 16px; padding: 1rem 1.25rem; border: 1px solid #c53703; width: 66.666%; max-width: 720px; }
+  .hero-link-row { display: flex; align-items: center; gap: 0.6rem; }
+  .hero-link-box a { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'Cormorant Garamond', serif; color:  #c53703; font-weight: 600; text-decoration: none; font-size: 22px; }
+  .hero-link-box a:hover { text-decoration: underline; }
+  .hero-link-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background:#c53703; flex-shrink: 0; }
+  .hero-link-arrow svg { width: 1rem; height: 1rem; stroke: currentColor; stroke-width: 1.8; }
+  
+  /* ── SECTION ── */
+  section { margin-bottom: 4.5rem; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.1; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .section-intro { font-size: 1rem; color: var(--text-secondary); line-height: 1.85; max-width: 720px; margin-bottom: 2rem; }
+  
+  /* ── IMAGE PLACEHOLDER ── */
+  .image-placeholder { background: linear-gradient(135deg, rgba(127,119,221,0.08) 0%, rgba(175,169,236,0.12) 100%); border: 2px dashed var(--purple-200); border-radius: 12px; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; color: var(--purple-600); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 2rem 0; min-height: 300px; padding: 1.5rem; overflow: hidden; }
+  .image-placeholder img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+  
+  /* ── CARD GRID ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .card { background: #fff; border: 2px solid var(--accent); border-radius: 12px; padding: 2rem; transition: transform 0.28s ease, box-shadow 0.28s ease; }
+  .card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 14px 36px rgba(83,74,183,0.12); }
+  .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.8rem; }
+  .card-grid.outcomes .card { border: 3px solid #16815B; }
+  .card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+  .card-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--purple-200); margin-bottom: 1rem; }
+  
+  /* ── METRICS ── */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .metric { position: relative; background: linear-gradient(135deg, #fff 0%, rgba(127,119,221,0.06) 45%, rgba(127,119,221,0.02) 100%); border: 2px solid rgba(83,74,183,0.12); border-radius: 16px; padding: 1.75rem; text-align: center; box-shadow: 0 8px 24px rgba(83,74,183,0.06); transition: transform 0.28s ease, box-shadow 0.28s ease; }
+  .metric:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 46px rgba(83,74,183,0.12); }
+  .metric::after { content: ''; position: absolute; top: 12px; right: 12px; width: 12px; height: 12px; border-radius: 50%; background: #16815B; box-shadow: 0 6px 18px rgba(83,74,183,0.12); }
+  .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300; color: #16815B; margin-bottom: 0.5rem; }
+  .metric-label { font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.08em; }
+  
+  /* ── TAG PILLS ── */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+  .tag { display: inline-flex; padding: 0.5rem 1rem; background: var(--purple-50); border: 1px solid var(--purple-100); border-radius: 20px; color: var(--purple-800); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  
+  /* ── TIMELINE ── */
+  .timeline { margin: 2rem 0; }
+  .timeline-item { display: flex; gap: 2rem; margin-bottom: 2rem; padding-left: 2rem; border-left: 2px solid var(--purple-200); position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .timeline-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+  .timeline-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+  
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid rgba(83,74,183,0.1); padding: 2.5rem 4rem; margin-top: 5rem; }
+  .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-text { font-size: 0.82rem; color: var(--text-secondary); letter-spacing: 0.05em; }
+  
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    main { padding: 2rem 1.5rem; }
+    header { padding: 1rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <a href="index.html" class="logo">Sylvie Vu</a>
+    <a href="index.html" class="back-link">← Back to work</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <p class="section-label">Design System</p>
+    <h1 class="hero-title">Adesy — Enterprise Design System</h1>
+    <div class="hero-meta">
+      <span>Design System Designer</span>
+      <span class="meta-dot">·</span>
+      <span>Component Library</span>
+      <span class="meta-dot">·</span>
+      <span>Design Tokens</span>
+      <span class="meta-dot">·</span>
+      <span>WCAG 2.1 AA</span>
+    </div>
+    <p class="hero-intro">Building a scalable, accessible design system from scratch for <span class="hero-highlight">7+ SaaS enterprise products</span> — collaborating across design, engineering, and product to establish shared standards, accelerate delivery, and maintain design quality at scale.</p>
+    
+    <span><h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 1rem;">Highlighted links:</h3></span>
+    <div class="hero-link-box">
+      <div class="hero-link-row">
+        <span class="hero-link-dot"></span>
+        <a href="https://adesy.aquila.fi/" target="_blank" rel="noopener">
+          https://adesy.aquila.fi/
+          <span class="hero-link-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8h8M12 5l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+      <div class="hero-link-row">
+        <span class="hero-link-dot"></span>
+        <a href="https://adesydesignsystem.com/" target="_blank" rel="noopener">
+          Case study - Grand One competition: Adesy x Personec F ESS
+          <span class="hero-link-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8h8M12 5l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section>
+    <p class="section-label">The Challenge</p>
+    <h2 class="section-title">Fragmented design across multiple products</h2>
+    <p class="section-intro">Multiple product teams were operating independently, each with inconsistent UI patterns, redundant components, and missing accessibility guidance. This led to duplicated work, longer design-to-dev cycles, and unpredictable user experiences across the product ecosystem.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Inconsistent patterns</h3>
+        <p>Each team reinvented components, leading to visual and interaction inconsistencies across products.</p>
+      </div>
+      <div class="card">
+        <h3>Slow handoff process</h3>
+        <p>Designers and developers had no shared language, causing delays and implementation mismatches.</p>
+      </div>
+      <div class="card">
+        <h3>Accessibility gaps</h3>
+        <p>No standardized approach to WCAG compliance; teams struggled to implement accessible UX.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE APPROACH -->
+  <section>
+    <p class="section-label">The Approach</p>
+    <h2 class="section-title">A collaborative, token-first system</h2>
+    <p class="section-intro">Starting from scratch, I led the design system effort alongside a dedicated team: a design system developer, design system owner, and myself as the design lead. We built Adesy through practical application, frequent feedback loops, and deep collaboration with product teams.</p>
+    
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 1rem;">1. Token Design & Architecture</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">I mapped token naming conventions and grouped them into logical categories — color, typography, spacing, shadow. Working closely with developers, I translated design tokens into code, establishing the foundation for a sustainable component system.</p>
+    <div class="image-placeholder"><img src="images/token-variables.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+    <div class="image-placeholder"><img src="images/token-variables2.jpg" alt="Figma token variables panel showing token hierarchy and naming structure"></div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 1rem;">2. Component Library Built on Tokens</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Designed components using tokens to ensure consistency and flexibility. Each component was handed off to developers with clear specs, then I conducted implementation reviews to ensure quality standards and design fidelity were met.</p>
+    <div class="image-placeholder"><img src="images/Component-library.jpg" alt="Figma component library with token-based styling"></div>
+    <div class="image-placeholder"><img src="images/Component-library-template responsiveness.jpg" alt="Figma component library with token-based styling"></div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 1rem;">3. Pilot Projects & Real-World Testing</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">I joined pilot projects as a UX Designer, testing components in practical screen designs. This hands-on approach ensured components were not just beautiful, but genuinely reusable and accessible in real product scenarios.</p>
+    <div class="image-placeholder"><img src="images/Pilot ESS x Adesy.jpg" alt="Figma component library with token-based styling"></div>
+    <div class="image-placeholder"><img src="images/Pilot ESS x Adesy-1.jpg" alt="Figma component library with token-based styling"></div>
+    <div class="image-placeholder"><img src="images/Pilot ESS x Adesy-2.jpg" alt="Figma component library with token-based styling"></div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 1rem;">4. Stakeholder Collaboration & Shared Ownership</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">I collaborated with product stakeholders to identify shared patterns and needs. This collaborative approach built trust, fostered design system adoption, and ensured Adesy solved real problems for the entire organization.</p>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section>
+    <p class="section-label">Accessibility & Quality</p>
+    <h2 class="section-title">WCAG 2.1 Level AA compliance</h2>
+    <p class="section-intro">Accessibility was a core principle from day one. Every component was tested for color contrast, keyboard navigation, screen reader support, and semantic HTML. The result: a design system that works for everyone.</p>
+    <div class="tag-list">
+      <span class="tag">WCAG 2.1 AA</span>
+      <span class="tag">Keyboard navigation</span>
+      <span class="tag">Color contrast</span>
+      <span class="tag">Screen reader tested</span>
+      <span class="tag">Semantic HTML</span>
+    </div>
+  </section>
+
+  <!-- OUTCOMES & IMPACT -->
+  <section>
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-title">Measured impact</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value">80%+</div>
+        <div class="metric-label">User satisfaction<br>first beta launch</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">90.3%</div>
+        <div class="metric-label">Found it easy to use<br>improved UX flows</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">7+</div>
+        <div class="metric-label">Enterprise SaaS<br>products supported</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Accessibility standard<br>WCAG 2.1 AA</div>
+      </div>
+    </div>
+    
+    <div class="card-grid outcomes" style="margin-top: 2.5rem;">
+      <div class="card">
+        <h3>Designer engagement</h3>
+        <p>Increased adoption through transparent design system ownership and collaborative feedback. Teams felt ownership of shared standards.</p>
+      </div>
+      <div class="card">
+        <h3>Developer trust</h3>
+        <p>Built strong relationships through consistent implementation reviews and clear specs, reducing back-and-forth cycles.</p>
+      </div>
+      <div class="card">
+        <h3>Faster delivery</h3>
+        <p>Reusable components and tokens cut design-to-code time, accelerating time-to-market for new products.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section>
+    <p class="section-label">Design System Workflow</p>
+    <h2 class="section-title">Our collaborative process</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Stakeholder Discovery</p>
+          <p class="timeline-desc">Learn shared patterns, pain points, and needs from product teams. Establish priorities for component library roadmap.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Design & Token Definition</p>
+          <p class="timeline-desc">Design components using token-based styling. Create clear specifications and handoff docs for developers.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Developer Implementation</p>
+          <p class="timeline-desc">Developers build components using tokens, ensuring accessibility and code quality from the start.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Implementation Review</p>
+          <p class="timeline-desc">Review built components against design specs, accessibility standards, and reusability criteria.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Pilot & Feedback</p>
+          <p class="timeline-desc">Test components in real products. Gather feedback from UX, dev, and stakeholders. Iterate.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-title">Launch & Support</p>
+          <p class="timeline-desc">Release to all product teams with training and documentation. Support adoption and handle requests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY LEARNINGS -->
+  <secton>
+    <p class="section-label">Key Learnings</p>
+    <h2 class="section-title">Building a system is building relationships</h2>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-number">1</p>
+        <h3>Start with shared problems</h3>
+        <p>Focus on patterns that solve real problems across multiple products. This builds buy-in and ensures adoption.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">2</p>
+        <h3>Collaborate early, iterate fast</h3>
+        <p>Involve developers and designers in the design process. Frequent feedback loops catch issues early and build shared ownership.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">3</p>
+        <h3>Design for maintainability</h3>
+        <p>Build components with future change in mind. Clear documentation and modular design make updates easier for teams.</p>
+      </div>
+      <div class="card">
+        <p class="card-number">4</p>
+        <h3>Accessibility from day one</h3>
+        <p>Don't treat accessibility as an afterthought. Build it into every component from the start. It benefits everyone.</p>
+      </div>
+    </div>
+
+    <br></br
+
+     <!-- OTHERS -->
+  <secton>
+    <p class="section-label">Process and related materials</p>
+    <h2 class="section-title">Highlighted resources of work processes</h2>
+
+    <div class="image-placeholder"><img src="images/adesy-html/Adesy launch.jpg" alt="Guiding products how to onboard to use the design system"></div>
+    <p style="
+
+  color: var(--text-secondary);
+
+  margin: 0 auto 0.5rem;
+
+  max-width: 700px;
+
+  font-size: 0.875rem;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  text-align: center;
+
+">
+
+Guiding products how to onboard to use the design system
+<br></br>
+
+</p>
+    <div class="image-placeholder"><img src="images/adesy-html/Adesy launch1.jpg" alt="Testimonials"></div>
+    <p style="
+
+  color: var(--text-secondary);
+
+  margin: 0 auto 0.5rem;
+
+  max-width: 700px;
+
+  font-size: 0.875rem;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  text-align: center;
+
+">
+
+Testimonials about my work for Adesy and for products and brand alignment across teams
+<br></br>
+
+    <div class="image-placeholder"><img src="images/adesy-html/Adesy launch2.jpg" alt="Adesy moodboard"></div>
+    <p style="
+
+  color: var(--text-secondary);
+
+  margin: 0 auto 0.5rem;
+
+  max-width: 700px;
+
+  font-size: 0.875rem;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  text-align: center;
+
+">
+
+Adesy moodboard when drafting the visual design language for the design system with Solveon portfolio style.
+<br></br>
+
+    <div class="image-placeholder"><img src="images/adesy-html/work-and-knowledge-process.jpg" alt="Adesy process work and knowledge mapping"></div>
+    <p style="
+
+  color: var(--text-secondary);
+
+  margin: 0 auto 0.5rem;
+
+  max-width: 700px;
+
+  font-size: 0.875rem;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  text-align: center;
+
+">
+
+- Component mapping and audit across products.<br>
+- Design System knowledge mapping.<br>
+- Information Architecture of Adesy, token structure mapping, aligning with developer to bring to the code base of the design system as the foundation.</p>
+<br></br>
+
+
+    <div class="image-placeholder"><img src="images/adesy-html/Adesy Figma training.jpg" alt="Figma training"></div>
+    <p style="
+
+  color: var(--text-secondary);
+
+  margin: 0 auto 0.5rem;
+
+  max-width: 700px;
+
+  font-size: 0.875rem;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  text-align: center;
+
+">
+
+Training designers to use the design system and also to enhence their skills for better design and handoff quality.
+<br></br>
+
+  </section>
+<a href="index.html" class="back-link">← Back to work</a>
+</main>
+
+
+
+<footer>
+  <div class="footer-content">
+    <span class="footer-text">© 2025 Sylvie Vu</span>
+    <span class="footer-text">Designed with system thinking 🤍</span>
+  </div>
+</footer>
+
+</body>
+</html>
